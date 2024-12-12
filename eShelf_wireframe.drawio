@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0" version="25.0.3">
   <diagram name="Page-1" id="DmScZk2urkVB36xNSZ5Q">
-    <mxGraphModel dx="773" dy="1380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="720" pageHeight="1280" background="none" math="0" shadow="1">
+    <mxGraphModel dx="928" dy="1656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="720" pageHeight="1280" background="none" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <object label="Window_Frame" id="1">
@@ -43,11 +43,11 @@
         <mxCell id="SNnv4V6MWg6mL4U4s1p6-20" value="&lt;div align=&quot;right&quot;&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 22px;&quot;&gt;Sign in with Google&amp;nbsp; &lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;align=right;" vertex="1" parent="SNnv4V6MWg6mL4U4s1p6-4">
           <mxGeometry x="230" y="1040" width="260" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="SNnv4V6MWg6mL4U4s1p6-22" value="&lt;font color=&quot;#009900&quot; style=&quot;font-size: 50px;&quot;&gt;G&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="SNnv4V6MWg6mL4U4s1p6-4">
-          <mxGeometry x="230" y="1040" width="70" height="50" as="geometry" />
-        </mxCell>
         <mxCell id="SNnv4V6MWg6mL4U4s1p6-23" value="&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 20px;&quot;&gt;Doesn&#39;t have an account? &lt;b&gt;Sign up&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="SNnv4V6MWg6mL4U4s1p6-4">
           <mxGeometry x="180" y="1190" width="330" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SNnv4V6MWg6mL4U4s1p6-26" value="" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg;" vertex="1" parent="SNnv4V6MWg6mL4U4s1p6-4">
+          <mxGeometry x="250" y="1050" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
