@@ -1,4 +1,4 @@
-package com.example.eshelf;
+package com.library.eshelf;
 
 import org.junit.Test;
 

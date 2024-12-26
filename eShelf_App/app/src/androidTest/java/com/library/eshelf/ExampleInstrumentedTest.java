@@ -1,4 +1,4 @@
-package com.example.eshelf;
+package com.library.eshelf;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.eshelf", appContext.getPackageName());
+        assertEquals("com.library.eshelf", appContext.getPackageName());
     }
 }
