@@ -1,75 +1,81 @@
 # eShelf - Personal Books & Ideas Manager
 
-**eShelf** is a retro-inspired Android application designed to manage personal book collections and ideas. It enables users to organize books, capture thoughts, and track reading goals while integrating with Google Drive for backup and sync.
+**eShelf** is a retro-inspired Android application designed to manage personal book collections and ideas. It enables users to organize books, capture thoughts, and track reading goals while integrating with Firebase for authentication, real-time database, and cloud storage.
 
 ---
 
-## **Features**
-### **Phase 1: Core Functionality**  
-- **User Authentication**
-  - Sign in with Google for account setup.
-  - Guest mode for local-only usage.
-- **Bookshelf Management**
-  - Add books manually: Title, author, genre, and status.
-  - View books as a list.
-  - Edit or delete book entries.
-- **Idea Management**
-  - Add simple ideas with title and content.
-  - View, edit, or delete ideas.
-- **Search**
-  - Basic search for books and ideas using keywords.
+## **Features & Development Status**
+
+### **📱 Core Features (Current Sprint)**
+- [ ] **User Authentication**
+  - [ ] Email/Password authentication
+  - [ ] Google Sign-In
+  - [ ] Guest mode (local storage only)
+  
+- [ ] **Book Management**
+  - [ ] Basic CRUD operations
+  - [ ] List/Grid view toggle
+  - [ ] Book status tracking (Reading, Completed, Wishlist)
+
+- [ ] **Ideas/Notes**
+  - [ ] Basic CRUD operations
+  - [ ] Simple text notes
+  - [ ] Basic search functionality
+
+### **🚀 Next Up**
+- [ ] **Enhanced Book Features**
+  - [ ] Manual cover image upload
+  - [ ] Sort & filter options
+  - [ ] ISBN barcode scanning
+
+- [ ] **Advanced Ideas Management**
+  - [ ] Tags support
+  - [ ] Link ideas to books
+  - [ ] Rich text formatting
+
+- [ ] **Local Data Management**
+  - [ ] CSV export/import
+  - [ ] Local backup/restore
+  - [ ] Search with filters
+
+### **🎯 Future Enhancements**
+- [ ] **Reading Goals**
+  - [ ] Set yearly/monthly targets
+  - [ ] Progress tracking
+  - [ ] Statistics dashboard
+
+- [ ] **UI/UX Improvements**
+  - [ ] Dark mode
+  - [ ] Custom themes
+  - [ ] Animations
+
+- [ ] **Advanced Features**
+  - [ ] Book ratings & reviews
+  - [ ] Reading statistics
+  - [ ] Custom shelves/collections
+
+### **🔮 Future Roadmap**
+- Google Drive backup/restore
+- Goodreads API integration
+- Book lending tracker
+- Audio notes
+- Cross-platform support (iOS/Web)
 
 ---
 
-### **Phase 2: Enhancing Usability**  
-- **Bookshelf Enhancements**
-  - Add book cover images manually.
-  - Sort and filter books (by status, title, or author).
-- **Barcode Scanner**
-  - Scan ISBN barcodes to fetch book details.
-- **Idea Management Improvements**
-  - Add tags to ideas for better organization.
-  - Link ideas to specific books.
-- **UI Improvements**
-  - Retro-inspired design for Bookshelf and Ideas.
-  - Floating Action Button (FAB) for quick actions.
+## **Development Progress**
+### Current Sprint (v0.1)
+- 🏗️ Setting up project structure
+- 🔨 Implementing core authentication
+- 📚 Basic book management
 
----
+### Known Issues
+- None tracked yet
 
-### **Phase 3: Backup & Sync**  
-- **Google Drive Integration**
-  - Manual backup and restore of books/ideas.
-  - Option to enable auto-sync for periodic backups.
-- **Local Backups**
-  - Export and import data as a CSV file.
-- **Sync Status View**
-  - Display sync status (e.g., last sync time, errors).
-
----
-
-### **Phase 4: Personalization & Goal Tracking**  
-- **Reading Goals**
-  - Set and track yearly/monthly reading goals.
-- **Reminders**
-  - Schedule reminders for reading or adding ideas.
-- **Dark Mode**
-  - Toggle light/dark themes for a comfortable reading experience.
-- **Advanced Search**
-  - Search books or ideas with filters (e.g., by author, tags, or status).
-
----
-
-### **Phase 5: Advanced Features**  
-- **Book Ratings & Reviews**
-  - Rate books and add personal reviews.
-- **Wishlist Management**
-  - Dedicated view for books marked as "Wishlist."
-- **Notifications**
-  - Notify users about reading goals or pending tasks.
-- **Statistics Dashboard**
-  - Visual insights on reading progress, ideas, and tags.
-- **Rich Text Editor for Ideas**
-  - Format notes with bold, italics, bullet points, and more.
+### Development Notes
+- Using Jetpack Compose for UI
+- Room database for local storage
+- MVVM architecture pattern
 
 ---
 
@@ -103,9 +109,12 @@
 ## **Tech Stack**
 - **Language**: Java
 - **UI Framework**: Jetpack Compose
-- **Database**: SQLite (Room Persistence Library)
+- **Local Database**: SQLite (Room Persistence Library)
+- **Cloud Backend**: Firebase
+  - Authentication
+  - Realtime Database
+  - Cloud Storage
 - **Barcode Scanner**: ML Kit or ZXing library
-- **Cloud Sync**: Google Drive API
 - **Backup Format**: CSV (for export/import)
 
 ---
@@ -115,9 +124,12 @@
    ```bash
    git clone https://github.com/Ruebled/eShelf.git
    ```
-2. Open the project in **Android Studio**.
-3. Build and run the app on an Android device/emulator.
-4. Connect to Google Drive for sync (optional).
+2. Open the project in **Android Studio**
+3. Set up Firebase:
+   - Add your `google-services.json`
+   - Enable Authentication, Realtime Database, and Storage
+4. Build and run the app on an Android device/emulator
+5. Sign in with your Google account or email
 
 ---
 
@@ -144,13 +156,13 @@ Placeholder for screenshots of major views:
 
 ## **Contributing**
 Contributions are welcome! To contribute:
-1. Fork the repository.
+1. Fork the repository
 2. Create a feature branch:
    ```bash
    git checkout -b feature/your-feature-name
    ```
-3. Commit your changes and push to your branch.
-4. Open a pull request.
+3. Commit your changes and push to your branch
+4. Open a pull request
 
 ---
 
