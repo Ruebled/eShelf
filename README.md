@@ -7,6 +7,7 @@
 ## **Features & Development Status**
 
 ### **📱 Core Features (Current Sprint)**
+
 - [ ] **User Authentication**
   - [ ] Email/Password authentication
   - [ ] Google Sign-In
@@ -23,6 +24,7 @@
   - [ ] Basic search functionality
 
 ### **🚀 Next Up**
+
 - [ ] **Enhanced Book Features**
   - [ ] Manual cover image upload
   - [ ] Sort & filter options
@@ -39,6 +41,7 @@
   - [ ] Search with filters
 
 ### **🎯 Future Enhancements**
+
 - [ ] **Reading Goals**
   - [ ] Set yearly/monthly targets
   - [ ] Progress tracking
@@ -55,6 +58,7 @@
   - [ ] Custom shelves/collections
 
 ### **🔮 Future Roadmap**
+
 - Google Drive backup/restore
 - Goodreads API integration
 - Book lending tracker
@@ -64,15 +68,19 @@
 ---
 
 ## **Development Progress**
+
 ### Current Sprint (v0.1)
+
 - 🏗️ Setting up project structure
 - 🔨 Implementing core authentication
 - 📚 Basic book management
 
 ### Known Issues
+
 - None tracked yet
 
 ### Development Notes
+
 - Using Jetpack Compose for UI
 - Room database for local storage
 - MVVM architecture pattern
@@ -80,7 +88,9 @@
 ---
 
 ## **App Navigation**
+
 ### **Main Views**
+
 1. **Onboarding & Authentication**
    - Welcome screen, Google login, and guest mode.
 2. **Home Dashboard**
@@ -107,6 +117,7 @@
 ---
 
 ## **Tech Stack**
+
 - **Language**: Java
 - **UI Framework**: Jetpack Compose
 - **Local Database**: SQLite (Room Persistence Library)
@@ -120,10 +131,13 @@
 ---
 
 ## **Installation**
+
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/Ruebled/eShelf.git
    ```
+
 2. Open the project in **Android Studio**
 3. Set up Firebase:
    - Add your `google-services.json`
@@ -134,6 +148,7 @@
 ---
 
 ## **Future Roadmap**
+
 - **Integration with Goodreads API** for book recommendations.
 - **Book lending tracker** for managing shared books.
 - **Audio notes** for idea management.
@@ -142,38 +157,44 @@
 ---
 
 ## **Screenshots**
-*
-Placeholder for screenshots of major views: 
+
+Placeholder for screenshots of major views:
+
 - Home, 
 - Bookshelf, 
 - Ideas, 
 - Sync,
 - Settings.
 - etc...
-*
 
 ---
 
 ## **Contributing**
+
 Contributions are welcome! To contribute:
 1. Fork the repository
 2. Create a feature branch:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
+
 3. Commit your changes and push to your branch
 4. Open a pull request
 
 ---
 
 ## **License**
+
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
 ## **Contact**
+
 For questions, suggestions, or feedback, please reach out via:
-- **Email**: ruebled.nix@gmail.com
+
+- **Email**: <ruebled.nix@gmail.com>
 - **GitHub Issues**: [eShelf Issues](https://github.com/Ruebled/eShelf/issues)
 
 ---
