@@ -40,7 +40,7 @@ public class AuthActivity extends AppCompatActivity {
     private void handleSignIn() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
-        
+
         if (validateInput(email, password)) {
             Log.d(TAG, "Starting sign in process");
             viewModel.signIn(email, password, new AuthViewModel.AuthCallback() {
@@ -63,7 +63,7 @@ public class AuthActivity extends AppCompatActivity {
     private void handleCreateAccount() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
-        
+
         if (validateInput(email, password)) {
             Log.d(TAG, "Starting account creation");
             viewModel.createAccount(email, password, new AuthViewModel.AuthCallback() {

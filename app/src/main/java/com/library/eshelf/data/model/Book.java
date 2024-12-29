@@ -1,5 +1,8 @@
 package com.library.eshelf.data.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 @Entity(tableName = "books")
 public class Book {
     @PrimaryKey(autoGenerate = true)
