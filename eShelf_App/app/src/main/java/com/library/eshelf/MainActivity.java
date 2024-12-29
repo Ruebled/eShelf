@@ -1,23 +1,74 @@
 package com.library.eshelf;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.library.eshelf.data.model.Book;
 import com.library.eshelf.ui.auth.AuthActivity;
+import com.library.eshelf.adapter.BookAdapter;
 import com.google.firebase.FirebaseApp;
+import com.library.eshelf.viewmodel.BookViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private BookViewModel bookViewModel;
+    private BookAdapter bookAdapter;
+    private static final int ADD_BOOK_REQUEST = 1;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         // Then initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        // Initialize RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        bookAdapter = new BookAdapter();
+        recyclerView.setAdapter(bookAdapter);
+
+        // Initialize ViewModel
+        bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
+        bookViewModel.getAllBooks().observe(this, books -> {
+            bookAdapter.setBooks(books);
+        });
+
+        // Setup add button
+        findViewById(R.id.addBookButton).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AddBookActivity.class);
+            startActivityForResult(intent, ADD_BOOK_REQUEST);
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ADD_BOOK_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+            String title = data.getStringExtra("title");
+            String author = data.getStringExtra("author");
+
+            Book newBook = new Book(title, author, "Reading");
+            bookViewModel.insert(newBook);
+
+            Toast.makeText(this, "Book added successfully", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
