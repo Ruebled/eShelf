@@ -1,4 +1,4 @@
-package com.library.eshelf;
+package com.library.eshelf.ui.main;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.library.eshelf.R;
 import com.library.eshelf.data.model.Book;
 import com.library.eshelf.ui.auth.AuthActivity;
-import com.library.eshelf.adapter.BookAdapter;
-import com.library.eshelf.viewmodel.BookViewModel;
+import com.library.eshelf.ui.book.AddBookActivity;
+import com.library.eshelf.ui.book.BookViewModel;
+import com.library.eshelf.ui.book.adapter.BookAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private BookViewModel bookViewModel;
@@ -79,4 +81,4 @@ public class MainActivity extends AppCompatActivity {
         }
         // else continue with main activity
     }
-}
+} 

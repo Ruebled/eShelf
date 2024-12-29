@@ -1,4 +1,4 @@
-package com.library.eshelf.adapter;
+package com.library.eshelf.ui.book.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,4 +88,4 @@ public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
         void onBookClick(Book book);
         void onMoreClick(Book book, View view);
     }
-}
+} 
