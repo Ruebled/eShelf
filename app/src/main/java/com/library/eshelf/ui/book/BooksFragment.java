@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.tabs.TabLayout;
+import com.library.eshelf.R;
 import com.library.eshelf.databinding.FragmentBooksBinding;
 import com.library.eshelf.data.model.Book;
 import com.library.eshelf.ui.book.adapter.BookAdapter;
@@ -34,9 +36,45 @@ public class BooksFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setupToolbar();
+        setupTabs();
         setupRecyclerView();
         setupViewModel();
         setupAddButton();
+    }
+
+    private void setupToolbar() {
+        // Optional: Setup toolbar menu or navigation if needed
+        binding.toolbar.setTitle(R.string.title_books);
+    }
+
+    private void setupTabs() {
+        String[] categories = {
+            getString(R.string.tab_reading),
+            getString(R.string.tab_completed),
+            getString(R.string.tab_dropped),
+            getString(R.string.tab_future)
+        };
+
+        for (String category : categories) {
+            binding.tabLayout.addTab(binding.tabLayout.newTab().setText(category));
+        }
+
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                String category = tab.getText().toString();
+                bookViewModel.getBooksByCategory(category).observe(getViewLifecycleOwner(), books -> {
+                    bookAdapter.submitList(books);
+                });
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
     }
 
     private void setupRecyclerView() {
@@ -47,7 +85,8 @@ public class BooksFragment extends Fragment {
 
     private void setupViewModel() {
         bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
-        bookViewModel.getAllBooks().observe(getViewLifecycleOwner(), books -> {
+        // Initially load "Reading" category
+        bookViewModel.getBooksByCategory("Reading").observe(getViewLifecycleOwner(), books -> {
             bookAdapter.submitList(books);
         });
     }
