@@ -48,7 +48,6 @@ public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
         void bind(Book book) {
             binding.bookTitle.setText(book.getTitle());
             binding.bookAuthor.setText(book.getAuthor());
-            binding.bookCategory.setText(book.getCategory());
 
             binding.getRoot().setOnClickListener(v -> {
                 if (listener != null) {
@@ -61,12 +60,6 @@ public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
                     listener.onMoreClick(book, binding.moreButton);
                 }
             });
-
-            // Set status color
-            int backgroundRes = book.getStatus().equals("Completed") 
-                ? R.drawable.category_background_completed 
-                : R.drawable.category_background;
-            binding.bookCategory.setBackgroundResource(backgroundRes);
         }
     }
 

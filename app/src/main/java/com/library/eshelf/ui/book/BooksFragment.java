@@ -52,8 +52,8 @@ public class BooksFragment extends Fragment {
         String[] categories = {
             getString(R.string.tab_reading),
             getString(R.string.tab_completed),
+            getString(R.string.tab_future),
             getString(R.string.tab_dropped),
-            getString(R.string.tab_future)
         };
 
         for (String category : categories) {

@@ -1,85 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="8dp">
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
 
         <ImageView
             android:id="@+id/bookCover"
             android:layout_width="60dp"
             android:layout_height="90dp"
-            android:scaleType="centerCrop"
-            android:background="#DDDDDD"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_book_placeholder"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_book_placeholder" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/bookTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:maxLines="2"
-            android:ellipsize="end"
+            android:textSize="25sp"
+            android:fontFamily="@font/patrickhand_regular"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@+id/moreButton"
             app:layout_constraintStart_toEndOf="@+id/bookCover"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Book Title" />
+            tools:text="Alice in wonderland" />
 
         <TextView
             android:id="@+id/bookAuthor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="9dp"
             android:layout_marginEnd="8dp"
-            android:textSize="14sp"
-            android:maxLines="1"
-            android:ellipsize="end"
+            android:textSize="16sp"
+            android:fontFamily="@font/patrickhand_regular"
+            android:textColor="#666666"
             app:layout_constraintEnd_toStartOf="@+id/moreButton"
             app:layout_constraintStart_toEndOf="@+id/bookCover"
             app:layout_constraintTop_toBottomOf="@+id/bookTitle"
-            tools:text="Author Name" />
-
-        <TextView
-            android:id="@+id/bookCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/category_background"
-            android:paddingStart="8dp"
-            android:paddingTop="2dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="2dp"
-            android:textSize="12sp"
-            android:textColor="#757575"
-            app:layout_constraintStart_toEndOf="@+id/bookCover"
-            app:layout_constraintTop_toBottomOf="@+id/bookAuthor"
-            tools:text="Reading" />
+            tools:text="Louis Carol" />
 
         <ImageButton
             android:id="@+id/moreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="8dp"
             android:src="@drawable/ic_more_vert"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#DDDDDD" />
+
+</LinearLayout>
