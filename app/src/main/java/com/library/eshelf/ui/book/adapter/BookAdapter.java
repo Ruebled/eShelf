@@ -1,6 +1,12 @@
 package com.library.eshelf.ui.book.adapter;
 
+import android.content.Context;
+import android.view.ContextThemeWrapper;
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
@@ -79,8 +85,18 @@ public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
         }
 
         private void showPopupMenu(View view, Book book) {
-            PopupMenu popup = new PopupMenu(view.getContext(), view);
+            Context wrapper = new ContextThemeWrapper(view.getContext(), R.style.CustomPopupMenu);
+            PopupMenu popup = new PopupMenu(wrapper, view, android.view.Gravity.END);
             popup.inflate(R.menu.book_item_menu);
+            
+            Menu menu = popup.getMenu();
+            for (int i = 0; i < menu.size(); i++) {
+                MenuItem item = menu.getItem(i);
+                SpannableString spanString = new SpannableString(item.getTitle().toString());
+                spanString.setSpan(new TextAppearanceSpan(view.getContext(), 
+                    R.style.CustomPopupMenuTextAppearance), 0, spanString.length(), 0);
+                item.setTitle(spanString);
+            }
             
             popup.setOnMenuItemClickListener(item -> {
                 if (listener == null) return false;

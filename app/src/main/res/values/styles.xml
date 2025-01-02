@@ -31,4 +31,21 @@
         <item name="android:textColor">@color/black</item>
         <item name="fontFamily">@font/patrickhand_regular</item>
     </style>
+
+    <style name="CustomPopupMenu" parent="Widget.MaterialComponents.PopupMenu">
+        <item name="android:popupBackground">@drawable/custom_menu_background</item>
+        <item name="android:dropDownHorizontalOffset">-48dp</item>
+        <item name="android:dropDownVerticalOffset">12dp</item>
+    </style>
+
+    <style name="CustomPopupMenuTextAppearance" parent="TextAppearance.AppCompat.Menu">
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/patrickhand_regular</item>
+        <item name="android:fontFamily">@font/patrickhand_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
 </resources>
