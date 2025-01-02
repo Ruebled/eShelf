@@ -25,6 +25,6 @@ public interface BookDao {
     @Query("SELECT * FROM books ORDER BY addedDate DESC")
     LiveData<List<Book>> getAllBooks();
 
-    @Query("SELECT * FROM books WHERE category = :category")
+    @Query("SELECT * FROM books WHERE category = :category ORDER BY addedDate DESC")
     LiveData<List<Book>> getBooksByCategory(String category);
 } 

@@ -19,12 +19,14 @@ import com.library.eshelf.R;
 import com.library.eshelf.databinding.FragmentBooksBinding;
 import com.library.eshelf.data.model.Book;
 import com.library.eshelf.ui.book.adapter.BookAdapter;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class BooksFragment extends Fragment {
     private FragmentBooksBinding binding;
     private BookViewModel bookViewModel;
     private BookAdapter bookAdapter;
     private static final int ADD_BOOK_REQUEST = 1;
+    private static final int EDIT_BOOK_REQUEST = 2;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +81,39 @@ public class BooksFragment extends Fragment {
 
     private void setupRecyclerView() {
         bookAdapter = new BookAdapter();
+        bookAdapter.setOnBookActionListener(new BookAdapter.OnBookActionListener() {
+            @Override
+            public void onBookClick(Book book) {
+                // Handle book click - maybe show details
+            }
+
+            @Override
+            public void onEditBook(Book book) {
+                Intent intent = new Intent(requireContext(), AddBookActivity.class);
+                intent.putExtra("book_id", book.getId());
+                intent.putExtra("book_title", book.getTitle());
+                intent.putExtra("book_author", book.getAuthor());
+                startActivityForResult(intent, EDIT_BOOK_REQUEST);
+            }
+
+            @Override
+            public void onChangeStatus(Book book) {
+                showChangeStatusDialog(book);
+            }
+
+            @Override
+            public void onDeleteBook(Book book) {
+                new MaterialAlertDialogBuilder(requireContext())
+                    .setTitle("Delete Book")
+                    .setMessage("Are you sure you want to delete '" + book.getTitle() + "'?")
+                    .setPositiveButton("Delete", (dialog, which) -> {
+                        bookViewModel.delete(book);
+                        Toast.makeText(requireContext(), "Book deleted", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
+            }
+        });
         binding.booksRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.booksRecyclerView.setAdapter(bookAdapter);
     }
@@ -110,6 +145,39 @@ public class BooksFragment extends Fragment {
             bookViewModel.insert(newBook);
             Toast.makeText(requireContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showChangeStatusDialog(Book book) {
+        String[] statuses = {
+            getString(R.string.tab_reading),
+            getString(R.string.tab_completed),
+            getString(R.string.tab_future),
+            getString(R.string.tab_dropped)
+        };
+
+        new MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Change Status")
+            .setItems(statuses, (dialog, which) -> {
+                String newStatus = statuses[which];
+                book.setStatus(newStatus);
+                book.setCategory(newStatus);
+                bookViewModel.update(book);
+                
+                int selectedTabPosition = binding.tabLayout.getSelectedTabPosition();
+                TabLayout.Tab currentTab = binding.tabLayout.getTabAt(selectedTabPosition);
+                if (currentTab != null) {
+                    String currentCategory = currentTab.getText().toString();
+                    if (!currentCategory.equals(newStatus)) {
+                        bookViewModel.getBooksByCategory(currentCategory)
+                            .observe(getViewLifecycleOwner(), books -> {
+                                bookAdapter.submitList(books);
+                            });
+                    }
+                }
+                
+                Toast.makeText(requireContext(), "Status updated", Toast.LENGTH_SHORT).show();
+            })
+            .show();
     }
 
     @Override

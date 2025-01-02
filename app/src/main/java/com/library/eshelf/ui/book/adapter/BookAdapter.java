@@ -3,6 +3,7 @@ package com.library.eshelf.ui.book.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -14,13 +15,32 @@ import com.library.eshelf.data.model.Book;
 import com.library.eshelf.R;
 
 public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
-    private OnBookClickListener listener;
+    private OnBookActionListener listener;
 
-    public BookAdapter() {
-        super(new BookDiffCallback());
+    public interface OnBookActionListener {
+        void onBookClick(Book book);
+        void onEditBook(Book book);
+        void onChangeStatus(Book book);
+        void onDeleteBook(Book book);
     }
 
-    public void setOnBookClickListener(OnBookClickListener listener) {
+    public BookAdapter() {
+        super(new DiffUtil.ItemCallback<Book>() {
+            @Override
+            public boolean areItemsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
+                return oldItem.getId() == newItem.getId();
+            }
+
+            @Override
+            public boolean areContentsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
+                return oldItem.getTitle().equals(newItem.getTitle()) &&
+                       oldItem.getAuthor().equals(newItem.getAuthor()) &&
+                       oldItem.getStatus().equals(newItem.getStatus());
+            }
+        });
+    }
+
+    public void setOnBookActionListener(OnBookActionListener listener) {
         this.listener = listener;
     }
 
@@ -55,30 +75,31 @@ public class BookAdapter extends ListAdapter<Book, BookAdapter.BookViewHolder> {
                 }
             });
 
-            binding.moreButton.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onMoreClick(book, binding.moreButton);
+            binding.moreButton.setOnClickListener(v -> showPopupMenu(v, book));
+        }
+
+        private void showPopupMenu(View view, Book book) {
+            PopupMenu popup = new PopupMenu(view.getContext(), view);
+            popup.inflate(R.menu.book_item_menu);
+            
+            popup.setOnMenuItemClickListener(item -> {
+                if (listener == null) return false;
+                
+                int itemId = item.getItemId();
+                if (itemId == R.id.action_edit) {
+                    listener.onEditBook(book);
+                    return true;
+                } else if (itemId == R.id.action_change_status) {
+                    listener.onChangeStatus(book);
+                    return true;
+                } else if (itemId == R.id.action_delete) {
+                    listener.onDeleteBook(book);
+                    return true;
                 }
+                return false;
             });
+            
+            popup.show();
         }
-    }
-
-    private static class BookDiffCallback extends DiffUtil.ItemCallback<Book> {
-        @Override
-        public boolean areItemsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
-            return oldItem.getId() == newItem.getId();
-        }
-
-        @Override
-        public boolean areContentsTheSame(@NonNull Book oldItem, @NonNull Book newItem) {
-            return oldItem.getTitle().equals(newItem.getTitle()) &&
-                   oldItem.getAuthor().equals(newItem.getAuthor()) &&
-                   oldItem.getStatus().equals(newItem.getStatus());
-        }
-    }
-
-    public interface OnBookClickListener {
-        void onBookClick(Book book);
-        void onMoreClick(Book book, View view);
     }
 } 
