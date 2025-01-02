@@ -1,12 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.EShelf" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+    <style name="Theme.EShelf" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/background_primary</item>
+        <item name="colorPrimaryVariant">@color/background_primary</item>
+        <item name="colorSecondaryVariant">@color/background_secondary</item>
+        <item name="colorOnPrimary">@color/black</item>
 
-    <style name="Theme.EShelf" parent="Base.Theme.EShelf">
-        <item name="android:fontFamily">@font/patrickhand_regular</item>
-        <item name="fontFamily">@font/patrickhand_regular</item>
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/background_primary</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">@color/background_primary</item>
     </style>
 </resources>

@@ -11,9 +11,10 @@
     <style name="CustomBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemBackground">@drawable/nav_item_background</item>
         <item name="android:minHeight">48dp</item>
-        <item name="android:background">#f5f5f5</item>
+        <item name="android:background">@color/background_primary</item>
         <item name="itemTextAppearanceActive">@style/TextAppearance.BottomNavigationView.Active</item>
         <item name="itemTextAppearanceInactive">@style/TextAppearance.BottomNavigationView.Inactive</item>
+        <item name="itemTextColor">@color/black</item>
         <item name="itemPaddingTop">12dp</item>
         <item name="itemPaddingBottom">12dp</item>
     </style>
@@ -22,6 +23,7 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="fontFamily">@font/patrickhand_regular</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.BottomNavigationView.Inactive" parent="TextAppearance.MaterialComponents.Caption">
