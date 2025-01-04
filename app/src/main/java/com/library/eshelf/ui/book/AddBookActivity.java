@@ -1,4 +1,4 @@
-package com.library.eshelf;
+package com.library.eshelf.ui.book;
 
 import android.app.Activity;
 import android.content.Intent;

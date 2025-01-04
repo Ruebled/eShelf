@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.library.eshelf.MainActivity;
+import com.library.eshelf.ui.main.MainActivity;
 import com.library.eshelf.R;
 
 public class AuthActivity extends AppCompatActivity {

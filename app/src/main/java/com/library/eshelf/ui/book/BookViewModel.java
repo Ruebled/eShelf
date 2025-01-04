@@ -1,4 +1,4 @@
-package com.library.eshelf.viewmodel;
+package com.library.eshelf.ui.book;
 
 import android.app.Application;
 
